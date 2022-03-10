@@ -68,5 +68,17 @@ namespace BestRestaurants.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+    [HttpPost]
+    public ActionResult Search(string description)
+    {
+    var cuisineList = _db.Cuisines.AsQueryable();
+    var restList  = _db.Restaurants.AsQueryable();
+
+    var id= cuisineList.Single(c =>c.Description== description).CuisineId;
+    restList = restList.Where(r => r.CuisineId == id);
+    var search = restList.ToList();
+    return View(search);
+    }
   }
 }

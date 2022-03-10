@@ -7,14 +7,6 @@
 
 <h1>Restaurants</h1>
 
-@using (Html.BeginForm("search", "Restaurants", FormMethod.Post))
-{
-  @Html.LabelFor(model => model.Name)
-  @Html.TextBoxFor(model => model.Name)
-  
-  <input type="submit" value="Search Restaurant based on cuisine" />
-}
-
 <ul>
   @foreach(Restaurant restaurant in Model)
   {
